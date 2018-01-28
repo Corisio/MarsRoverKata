@@ -9,33 +9,26 @@ namespace MarsRoverkata
     public class Rover
     {
         private const char INITIAL_DIRECTION = 'N';
-
-        private const char FORWARD_COMMAND = 'f';
-        private const char BACKWARD_COMMAND = 'b';
-
-        private Dictionary<char, IRoverInstruction> instructions; 
+        private InstructionsParser instructionsParser;
 
         public Rover()
         {
             Position = new Position();
             Direction = INITIAL_DIRECTION;
 
-            instructions = new Dictionary<char, IRoverInstruction>
-            {
-                { FORWARD_COMMAND,  new Forward()  },
-                { BACKWARD_COMMAND, new Backward() }
-            };
+            instructionsParser = new InstructionsParser();
         }
 
         public Position Position { get; set; }
 
         public char Direction { get; set; }
 
-        public void Execute(List<char> list)
+        public void Execute(List<char> commandsList)
         {
-            foreach(var command in list)
+            foreach(var command in commandsList)
             {
-                Position =  instructions[command].Do(Position);
+                var instruction = instructionsParser.Parse(command);
+                Position =  instruction.Do(Position);
             }
         }
     }
