@@ -13,10 +13,18 @@ namespace MarsRoverkata
         private const char FORWARD_COMMAND = 'f';
         private const char BACKWARD_COMMAND = 'b';
 
+        private Dictionary<char, Action> actions; 
+
         public Rover()
         {
             Position = new Position();
             Direction = INITIAL_DIRECTION;
+
+            actions = new Dictionary<char, Action>
+            {
+                { FORWARD_COMMAND,  MoveForward },
+                { BACKWARD_COMMAND, MoveBackwards }
+            };
         }
 
         public Position Position { get; set; }
@@ -27,15 +35,7 @@ namespace MarsRoverkata
         {
             foreach(var command in list)
             {
-                switch(command)
-                {
-                    case FORWARD_COMMAND:
-                        MoveForward();
-                        break;
-                    case BACKWARD_COMMAND:
-                        MoveBackwards();
-                        break;
-                }
+                actions[command]();
             }
         }
 
