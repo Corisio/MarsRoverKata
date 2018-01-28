@@ -45,9 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backward.cs" />
+    <Compile Include="Forward.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
+    <Compile Include="RoverCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

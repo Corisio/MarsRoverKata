@@ -13,17 +13,17 @@ namespace MarsRoverkata
         private const char FORWARD_COMMAND = 'f';
         private const char BACKWARD_COMMAND = 'b';
 
-        private Dictionary<char, Action> actions; 
+        private Dictionary<char, IRoverInstruction> instructions; 
 
         public Rover()
         {
             Position = new Position();
             Direction = INITIAL_DIRECTION;
 
-            actions = new Dictionary<char, Action>
+            instructions = new Dictionary<char, IRoverInstruction>
             {
-                { FORWARD_COMMAND,  MoveForward },
-                { BACKWARD_COMMAND, MoveBackwards }
+                { FORWARD_COMMAND,  new Forward()  },
+                { BACKWARD_COMMAND, new Backward() }
             };
         }
 
@@ -35,18 +35,8 @@ namespace MarsRoverkata
         {
             foreach(var command in list)
             {
-                actions[command]();
+                Position =  instructions[command].Do(Position);
             }
-        }
-
-        private void MoveBackwards()
-        {
-            Position.Y--;
-        }
-
-        private void MoveForward()
-        {
-            Position.Y++;
         }
     }
 }
