@@ -1,13 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarsRoverkata
 {
-    public class Rover
+    public class Rover : ICommandable
     {
+        public GridPosition Position { get; set; }
 
+        public Rover(BidimensionalCoordinates startingPositionInGrid, CardinalPoint orientation)
+        {
+            Position = new GridPosition(startingPositionInGrid, orientation);
+        }
+
+        public void ExecuteCommands(char[] commands)
+        {
+            foreach (var command in commands)
+            {
+                Position.Move(command);
+            }
+        }
     }
 }
