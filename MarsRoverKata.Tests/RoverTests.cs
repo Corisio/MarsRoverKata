@@ -30,70 +30,70 @@ namespace MarsRoverkata.Tests
         [Test]
         public void OnlyIncreaseYInOneWhenFacingNorthAndMovingForward()
         {
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_FORWARD_COMMAND});
+            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND});
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y + 1, DEFAULT_STARTING_CARDINAL_POINT, rover);
         }
 
         [Test]
         public void OnlyDecreaseYInOneWhenFacingNorthAndMovingBackwards()
         {
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_BACKWARDS_COMMAND });
+            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y - 1, DEFAULT_STARTING_CARDINAL_POINT, rover);
         }
 
         [Test]
         public void OnlyIncreaseXInOneWhenFacingEastAndMovingForward()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.East;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_FORWARD_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.East;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
             CheckPosition(DEFAULT_STARTING_X + 1, DEFAULT_STARTING_Y, CardinalPoint.East, rover);
         }
 
         [Test]
         public void OnlyDecreaseXInOneWhenFacingEastAndMovingBackwards()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.East;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_BACKWARDS_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.East;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
             CheckPosition(DEFAULT_STARTING_X - 1, DEFAULT_STARTING_Y, CardinalPoint.East, rover);
         }
 
         [Test]
         public void OnlyDecreaseYInOneWhenFacingSouthAndMovingForward()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.South;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_FORWARD_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.South;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y - 1, CardinalPoint.South, rover);
         }
 
         [Test]
         public void OnlyIncreaseYInOneWhenFacingSouthAndMovingBackwards()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.South;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_BACKWARDS_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.South;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y + 1, CardinalPoint.South, rover);
         }
 
         [Test]
         public void OnlyDecreaseXInOneWhenFacingWestAndMovingForward()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.West;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_FORWARD_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.West;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
             CheckPosition(DEFAULT_STARTING_X - 1, DEFAULT_STARTING_Y, CardinalPoint.West, rover);
         }
 
         [Test]
         public void OnlyIncreaseXInOneWhenFacingWestAndMovingBackwards()
         {
-            rover.Position.FacingCardinalPoint = CardinalPoint.West;
-            rover.ExecuteCommands(new char[] { GridPosition.MOVE_BACKWARDS_COMMAND });
+            rover.FacingCardinalPoint = CardinalPoint.West;
+            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
             CheckPosition(DEFAULT_STARTING_X + 1, DEFAULT_STARTING_Y, CardinalPoint.West, rover);
         }
 
         private static void CheckPosition(int expectedX, int expectedY, CardinalPoint expectedCardinalPoint, Rover testedRover)
         {
-            Assert.AreEqual(expectedX, testedRover.Position.Coordinates.X);
-            Assert.AreEqual(expectedY, testedRover.Position.Coordinates.Y);
-            Assert.AreEqual(expectedCardinalPoint, testedRover.Position.FacingCardinalPoint);
+            Assert.AreEqual(expectedX, testedRover.Coordinates.X);
+            Assert.AreEqual(expectedY, testedRover.Coordinates.Y);
+            Assert.AreEqual(expectedCardinalPoint, testedRover.FacingCardinalPoint);
         }
     }
 }
