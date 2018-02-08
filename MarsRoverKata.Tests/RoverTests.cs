@@ -30,14 +30,16 @@ namespace MarsRoverkata.Tests
         [Test]
         public void OnlyIncreaseYInOneWhenFacingNorthAndMovingForward()
         {
-            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND});
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_FORWARD_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y + 1, DEFAULT_STARTING_CARDINAL_POINT, rover);
         }
 
         [Test]
         public void OnlyDecreaseYInOneWhenFacingNorthAndMovingBackwards()
         {
-            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y - 1, DEFAULT_STARTING_CARDINAL_POINT, rover);
         }
 
@@ -45,7 +47,8 @@ namespace MarsRoverkata.Tests
         public void OnlyIncreaseXInOneWhenFacingEastAndMovingForward()
         {
             rover.FacingCardinalPoint = CardinalPoint.East;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_FORWARD_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X + 1, DEFAULT_STARTING_Y, CardinalPoint.East, rover);
         }
 
@@ -53,7 +56,8 @@ namespace MarsRoverkata.Tests
         public void OnlyDecreaseXInOneWhenFacingEastAndMovingBackwards()
         {
             rover.FacingCardinalPoint = CardinalPoint.East;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X - 1, DEFAULT_STARTING_Y, CardinalPoint.East, rover);
         }
 
@@ -61,7 +65,8 @@ namespace MarsRoverkata.Tests
         public void OnlyDecreaseYInOneWhenFacingSouthAndMovingForward()
         {
             rover.FacingCardinalPoint = CardinalPoint.South;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_FORWARD_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y - 1, CardinalPoint.South, rover);
         }
 
@@ -69,7 +74,8 @@ namespace MarsRoverkata.Tests
         public void OnlyIncreaseYInOneWhenFacingSouthAndMovingBackwards()
         {
             rover.FacingCardinalPoint = CardinalPoint.South;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X, DEFAULT_STARTING_Y + 1, CardinalPoint.South, rover);
         }
 
@@ -77,7 +83,8 @@ namespace MarsRoverkata.Tests
         public void OnlyDecreaseXInOneWhenFacingWestAndMovingForward()
         {
             rover.FacingCardinalPoint = CardinalPoint.West;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_FORWARD_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_FORWARD_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X - 1, DEFAULT_STARTING_Y, CardinalPoint.West, rover);
         }
 
@@ -85,7 +92,8 @@ namespace MarsRoverkata.Tests
         public void OnlyIncreaseXInOneWhenFacingWestAndMovingBackwards()
         {
             rover.FacingCardinalPoint = CardinalPoint.West;
-            rover.ExecuteCommands(new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            var command = new MovementCommand(rover, new char[] { Rover.MOVE_BACKWARDS_COMMAND });
+            command.Execute();
             CheckPosition(DEFAULT_STARTING_X + 1, DEFAULT_STARTING_Y, CardinalPoint.West, rover);
         }
 

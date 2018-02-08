@@ -48,7 +48,9 @@
     <Compile Include="BidimensionalCoordinates.cs" />
     <Compile Include="CardinalPoint.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="ICommandable.cs" />
+    <Compile Include="MovementCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rover.cs" />
   </ItemGroup>
